@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haneen Ayman's portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            padding: 40px 50px;
+            background-color: white;
+            border-radius: 24px;
+            box-shadow: 0 12px 35px rgba(108, 117, 125, 0.08);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(206, 212, 218, 0.3);
+        }
+        
+        .header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 60px;
+            padding-bottom: 35px;
+            border-bottom: 1px solid #e9ecef;
+            position: relative;
+        }
+        
+        .profile-pic-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 40px;
+            border: 6px solid #fff;
+            box-shadow: 0 8px 25px rgba(108, 117, 125, 0.15);
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #6c757d, #adb5bd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .profile-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 3.5rem;
+        }
+        
+        .name-section {
+            flex: 1;
+            padding-top: 15px;
+        }
+        
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #343a40;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #e83e8c;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            display: inline-block;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(232, 62, 140, 0.3);
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            margin-top: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .section-title i {
+            margin-right: 12px;
+            color: #e83e8c;
+            background-color: rgba(232, 62, 140, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .section-content {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .section-content p {
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+        }
+        
+        .contact-info i {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(108, 117, 125, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        /* Awards Section (now with skill tag style) */
+        .awards-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .award-tag {
+            background-color: #f8f9fa;
+            color: #495057;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid rgba(108, 117, 125, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .award-tag:hover {
+            background-color: #e9ecef;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.1);
+        }
+        
+        .award-tag a {
+            color: #495057;
+        }
+        
+        /* Skills Section (now with experience item style) */
+        .skill-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #f1f3f5;
+        }
+        
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+        
+        .skill-category {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-category i {
+            color: #e83e8c;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .skill-details {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        
+        
+        /* Events Section */
+        .events-list {
+            list-style: none;
+        }
+        
+        .event-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #f1f3f5;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .event-item:last-child {
+            border-bottom: none;
+        }
+        
+        .event-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #e83e8c;
+        }
+        
+        .event-date {
+            color: #e83e8c;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .event-title {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        
+        .event-description {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        
+        /* Volunteering Section */
+        .volunteering-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #f1f3f5;
+        }
+        
+        .volunteering-item:last-child {
+            border-bottom: none;
+        }
+        
+        .volunteering-role {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .volunteering-role i {
+            color: #e83e8c;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .volunteering-org {
+            color: #e83e8c;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        
+        .volunteering-duration {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .volunteering-description {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        
+        .decoration {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .dec-1 {
+            background: linear-gradient(135deg, #6c757d, #adb5bd);
+            top: -120px;
+            right: -120px;
+            width: 300px;
+            height: 300px;
+        }
+        
+        .dec-2 {
+            background: linear-gradient(135deg, #e83e8c, #ff8fab);
+            bottom: -100px;
+            left: -100px;
+            width: 250px;
+            height: 250px;
+        }
+        
+        .dec-3 {
+            background: #e83e8c;
+            width: 80px;
+            height: 80px;
+            top: 40px;
+            left: 100px;
+            opacity: 0.05;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 1px solid #e9ecef;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f8f9fa;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(108, 117, 125, 0.2);
+        }
+        
+        .social-link:hover {
+            background-color: #e83e8c;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(232, 62, 140, 0.2);
+        }
+        
+        @media (max-width: 900px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .profile-pic-container {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .name-section {
+                padding-top: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+            
+            .name {
+                font-size: 2.8rem;
+            }
+            
+            .content {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+            
+            .profile-pic-container {
+                width: 140px;
+                height: 140px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .name {
+                font-size: 2.3rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+            
+            .container {
+                padding: 25px;
+            }
+            
+            .profile-pic-container {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .decoration {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="decoration dec-1"></div>
+        <div class="decoration dec-2"></div>
+        <div class="decoration dec-3"></div>
+        
+        <div class="header">
+            <div class="profile-pic-container">
+
+                <img src="https://raw.githubusercontent.com/haneenayman66666-max/Profile-1/main/WhatsApp Image 2025-09-26 at 03.22.28_555e5d9a.jpg" alt="Haneen Ayman" class="profile-pic" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="profile-placeholder" style="display: none;">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+            
+            <div class="name-section">
+                <h1 class="name">Haneen Ayman</h1>
+                <div class="section-content" style="margin-top: 20px;">
+                    <p>I’m a Business Administration student driven by curiosity and the ambition to create meaningful change. I enjoy turning complex problems into clear strategies and finding innovative ways to make ideas work in practice. With a balance of analytical thinking and creativity, I’m building the skills to grow into a professional who adds value, adapts quickly, and leads with impact.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="left-column">
+
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-envelope"></i> Contact</h3>
+                    <div class="section-content">
+                        <ul class="contact-info">
+                            <li><i class="fas fa-envelope"></i> haneenayman23@outlook.com</li>
+                            <li><i class="fas fa-phone"></i> +20 1558200587</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Suez, Egypt</li>
+                            <li><i class="fab fa-linkedin"></i>www.linkedin.com/in/haneen-ayman-240051387</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-briefcase"></i> Experience</h3>
+                    <div class="section-content">
+                        
+                         <div class="skill-item">
+                            <p class="skill-category"><i class="fas fa-minus"></i> Talent Managment Vice Head (Recruitment)</p>
+                            <p class="volunteering-org">Galala Rally Society</p>
+                            <p class="volunteering-duration">2025 - Present</p>
+                            <p class="skill-details">I led recruitment strategies and coordinated the talent acquisition process for the organization. I managed candidate sourcing, screening, and selection, ensuring alignment with organizational needs and culture. Additionally, I collaborated with team members to improve recruitment workflows, enhance candidate experience, and support organizational growth through effective talent management practices.</p>
+                            
+                        </div>
+
+                        <div class="skill-item">
+                            <p class="skill-category"><i class="fas fa-minus"></i> Smart Home Solutions Project Coordinator</p>
+                            <p class="volunteering-org">EL Halim Company</p>
+                            <p class="volunteering-duration">2023 - 2024</p>
+                            <p class="skill-details">I contributed to the design and implementation of smart home systems, including AI-powered security, smart gates, and home automation. I conducted feasibility studies and prepared cost estimates for fiber optic-based infrastructure projects, while coordinating between developers, suppliers, and technical teams to ensure project goals were achieved. Additionally, I contributed innovative ideas and supported workflow improvements to enhance project efficiency and effectiveness.</p>
+                            
+                        </div>
+
+                        <div class="skill-item">
+                            <p class="skill-category"><i class="fas fa-minus"></i> Content Creator Assistant</p>
+                            <p class="volunteering-org">GU media</p>
+                            <p class="volunteering-duration">2024 - 2025</p>
+                            <p class="skill-details">Contributed to content creation and event promotion initiatives.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-calendar-alt"></i> Events</h3>
+                    <div class="section-content">
+                        <ul class="events-list">
+                            <li class="event-item">
+                                <div class="event-date">November 11th 2025</div>
+                                <div class="event-title">Galala University's First Annual Forum for Collaboration with the Industry Sector - Organizer</div>
+                                <div class="event-description">I coordinated every aspect of the event—schedules, seating, meals, and tours—and ensured everything ran smoothly, allowing participants to fully engage with the forum.</div>
+                            </li>
+                            
+                            <li class="event-item">
+                                <div class="event-date">June 2023</div>
+                                <div class="event-title">Galala University’s International Bazaar - Student Cultural Representative</div>
+                                <div class="event-description">my Moroccan teammate and I represented Moroccan culture, gaining valuable experience in teamwork, cultural exchange, and event preparation.
+Together, we prepared traditional Moroccan tea and sweets, hand-designed the display, and delivered an authentic cultural experience through presentation, attire, and hospitality.</div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+            <div class="right-column">
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-certificate"></i> Certificates</h3>
+                    <div class="section-content">
+                        <div class="awards-list">
+                            <span class="award-tag"><a href="https://raw.githubusercontent.com/haneenayman66666-max/Profile-1/main/Arizona Innovation Certificate.pdf">ASU Innovation Certificate 2024</a></span>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-tools"></i> Skills</h3>
+                    <div class="section-content">
+                        <div class="skill-item">
+                            <p class="skill-category"><i class="fas fa-chevron-right"></i> Business & Project Management</p>
+                            <p class="skill-details"><b>Project Planning & Coordination:</b> Managed events and projects from concept to execution, ensuring timelines, budgets, and resources were optimized.</p>
+                            <p class="skill-details"><b>Business Planning & Analysis:</b> Developed comprehensive business plans, financial projections, and strategic proposals.</p>
+                            <p class="skill-details"><b>Team Leadership & Collaboration:</b> led diverse teams, delegated tasks efficiently, and facilitated effective communication between stakeholders.</p>
+                            <p class="skill-details"><b>Event Management:</b> Coordinated schedules, logistics, and client interactions for seamless event execution.</p>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <p class="skill-category"><i class="fas fa-chevron-right"></i> Technical & Digital Skills </p>
+                            <p class="skill-details"><b>Digital Tools & Platforms:</b> Proficient in Notion, GitHub, Microsoft Office Suite, Google Workspace, Web development (HTML/CSS/JavaScript), Power BI and Rapidminer.</p>
+                            <p class="skill-details"><b>Data Analysis & Visualization:</b> Analyzed data to support decision-making and strategic planning.</p>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <p class="skill-category"><i class="fas fa-chevron-right"></i> Communication & Interpersonal Skills</p>
+                            <p class="skill-details"><b>Professional Communication:</b> Strong English writing, speaking, and presentation skills; capable of drafting formal reports and proposals.</p>
+                            <p class="skill-details"><b>Negotiation & Coordination:</b> Liaised with clients, vendors, and teams to achieve project goals efficiently.</p>
+                            <p class="skill-details"><b>Cross-Cultural Awareness:</b> Experienced in representing and collaborating with diverse cultures.</p>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <p class="skill-category"><i class="fas fa-chevron-right"></i> Personal & Leadership Qualities</p>
+                            <p class="skill-details"><b>Problem Solving & Critical Thinking:</b> Identifying challenges and implementing effective solutions.</p>
+                            <p class="skill-details"><b>Time Management & Organization:</b> Efficiently balancing multiple tasks and deadlines.</p>
+                            <p class="skill-details"><b>Adaptability & Learning:</b> Quick to learn new tools and adapt to evolving project requirements.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <div class="section-content">
+                        <div class="volunteering-item">
+                            <div class="volunteering-role"><i class="fas fa-university"></i> Galala University</div>
+                            <div class="volunteering-org">Faculty of Administrative Sciences (BIS)</div>
+                            <div class="volunteering-duration">2027</div>
+                            
+                        </div>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2026 Haneen Ayman. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Profile picture upload simulation
+        const profilePlaceholder = document.querySelector('.profile-placeholder');
+        const profilePicContainer = document.querySelector('.profile-pic-container');
+        
+        profilePicContainer.addEventListener('click', function() {
+            const icon = profilePlaceholder.querySelector('i');
+            icon.style.transform = 'scale(1.2)';
+            icon.style.transition = 'transform 0.3s ease';
+            
+            setTimeout(() => {
+                icon.style.transform = 'scale(1)';
+            }, 300);
+            
+            console.log("Click to upload your profile picture");
+        });
+        
+        // Enhanced hover effects for award tags
+        document.querySelectorAll('.award-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 8px 20px rgba(108, 117, 125, 0.15)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+        
+        // Animate skill bars on scroll
+        const skillBars = document.querySelectorAll('.skill-level');
+        
+        const animateSkillBars = () => {
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                
+                setTimeout(() => {
+                    bar.style.transition = 'width 1.5s ease-in-out';
+                    bar.style.width = width;
+                }, 300);
+            });
+        };
+        
+        // Animate skill bars when page loads
+        window.addEventListener('load', animateSkillBars);
+    </script>
+</body>
+</html>
